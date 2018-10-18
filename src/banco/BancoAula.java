@@ -53,7 +53,7 @@ public class BancoAula extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaBanco = new javax.swing.JTextArea();
         jButtonListar = new javax.swing.JButton();
-        jTextFieldNumTitulares = new javax.swing.JTextField();
+        jSpinnerNumTitulares = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,12 +125,6 @@ public class BancoAula extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldNumTitulares.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNumTitularesActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -162,21 +156,20 @@ public class BancoAula extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabelCpf)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jTextFieldCpf, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabelEndereco)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabelEndereco)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLabelCpf))
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabelNumTitulares)
                                 .addComponent(jButtonSalvar)
-                                .addComponent(jTextFieldNumTitulares, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(253, Short.MAX_VALUE))
+                                .addComponent(jSpinnerNumTitulares, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,7 +191,7 @@ public class BancoAula extends javax.swing.JFrame {
                     .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextFieldNumTitulares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jSpinnerNumTitulares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addComponent(jButtonSalvar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -221,14 +214,14 @@ public class BancoAula extends javax.swing.JFrame {
         String nome = (jTextFieldNome.getText());
         String cpf = (jTextFieldCpf.getText());
         String endereco = (jTextFieldEndereco.getText());
-        int num_titu = Integer.parseInt(jTextFieldNumTitulares.getText());
+        int num_titu = (int) (jSpinnerNumTitulares.getValue());
         
         
         Conta auxConta;
                
         auxConta = new Conta(numero, saldo, limite, nome, cpf, endereco);
 
-        for (int i = 0; i < Integer.parseInt(jTextFieldNumTitulares.getText()); i++) {
+        for (int i = 0; i < (int)(jSpinnerNumTitulares.getValue()) - 1; i++) {
             
             AddTitular auxAdd = new AddTitular();
             
@@ -272,22 +265,24 @@ public class BancoAula extends javax.swing.JFrame {
      //Botao Listar
     private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
         // TODO add your handling code here:
+        
+        jTextAreaBanco.setText("Contas:");
+        
         for (Conta Continha : Contas)
         {
-            jTextAreaBanco.append(Continha.getNumero() + " , " + Continha.getSaldo() + " , " + Continha.getLimite());
+            jTextAreaBanco.append("\nNumero: " + Continha.getNumero() + "\nSaldo: " + Continha.getSaldo() +
+                    "\nLimite: " + Continha.getLimite());
             
+            jTextAreaBanco.append("\n\nTItulares: \n");
             
             for(Pessoa titu : Continha.getTitulares()){
-                jTextAreaBanco.append(titu.getNome() + " , " + titu.getCpf() + " , " + titu.getEndereco());
+                jTextAreaBanco.append("Nome: " + titu.getNome() + "   CPF: " + titu.getCpf() + 
+                        "   Endereço: " + titu.getEndereco() + "\n");
             }
         }
         
         
     }//GEN-LAST:event_jButtonListarActionPerformed
-
-    private void jTextFieldNumTitularesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNumTitularesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNumTitularesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,13 +330,13 @@ public class BancoAula extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNumero;
     private javax.swing.JLabel jLabelSaldo;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSpinner jSpinnerNumTitulares;
     private javax.swing.JTextArea jTextAreaBanco;
     private javax.swing.JTextField jTextFieldCpf;
     private javax.swing.JTextField jTextFieldEndereco;
     private javax.swing.JTextField jTextFieldLimite;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldNum;
-    private javax.swing.JTextField jTextFieldNumTitulares;
     private javax.swing.JTextField jTextFieldSaldo;
     // End of variables declaration//GEN-END:variables
 }

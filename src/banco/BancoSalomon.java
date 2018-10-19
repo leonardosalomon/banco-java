@@ -16,8 +16,8 @@ public class BancoSalomon extends javax.swing.JFrame {
     /**
      * Creates new form BancoSalomon
      */
-     ArrayList<Conta> Contas;
-     ArrayList<Pessoa> titulares;
+    ArrayList<Conta> Contas;
+    ArrayList<Pessoa> titulares;
 
     public BancoSalomon() {
         initComponents();
@@ -252,8 +252,7 @@ public class BancoSalomon extends javax.swing.JFrame {
         int numero = Integer.parseInt(jTextFieldNumero.getText());
         float saldo = Float.parseFloat(jTextFieldSaldo.getText());
         float limite = Float.parseFloat(jTextFieldLimite.getText());
-        
-        
+
         Conta auxConta;
 
         auxConta = new Conta(numero, saldo, limite, this.titulares);
@@ -297,9 +296,8 @@ public class BancoSalomon extends javax.swing.JFrame {
         String titular = (jTextFieldTitular.getText());
         String cpf = (jTextFieldCPF.getText());
         String endereco = (jTextFieldEndereço.getText());
-        
-        //if (jTextFieldTitular.getText() != ) {
-            Pessoa titu = new Pessoa(titular, cpf, endereco);
+
+        Pessoa titu = new Pessoa(titular, cpf, endereco);
 
         titulares.add(titu);
 
@@ -307,9 +305,6 @@ public class BancoSalomon extends javax.swing.JFrame {
         jTextFieldCPF.setText("");
         jTextFieldEndereço.setText("");
 
-        //}
-        
-        
 
     }//GEN-LAST:event_jButtonAddTitularActionPerformed
 

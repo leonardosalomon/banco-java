@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 package banco;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
- /*
+/*
  * @author Leonardo Salomon
  */
 public class BancoAula extends javax.swing.JFrame {
@@ -20,7 +18,7 @@ public class BancoAula extends javax.swing.JFrame {
      */
     ArrayList<Conta> Contas;
     private ArrayList<Pessoa> Titulares;
-    
+
     public BancoAula() {
         initComponents();
         Contas = new ArrayList<Conta>();
@@ -108,6 +106,7 @@ public class BancoAula extends javax.swing.JFrame {
             }
         });
 
+        jTextFieldNum.setName(""); // NOI18N
         jTextFieldNum.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNumActionPerformed(evt);
@@ -204,10 +203,9 @@ public class BancoAula extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
     //Botao Salvar
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        
+
         int numero = Integer.parseInt(jTextFieldNum.getText());
         float saldo = Float.parseFloat(jTextFieldSaldo.getText());
         float limite = Float.parseFloat(jTextFieldLimite.getText());
@@ -215,25 +213,24 @@ public class BancoAula extends javax.swing.JFrame {
         String cpf = (jTextFieldCpf.getText());
         String endereco = (jTextFieldEndereco.getText());
         int num_titu = (int) (jSpinnerNumTitulares.getValue());
-        
-        
+
         Conta auxConta;
-               
+
         auxConta = new Conta(numero, saldo, limite, nome, cpf, endereco);
 
-        for (int i = 0; i < (int)(jSpinnerNumTitulares.getValue()) - 1; i++) {
-            
+        for (int i = 0; i < (int) (jSpinnerNumTitulares.getValue()) - 1; i++) {
+
             AddTitular auxAdd = new AddTitular();
-            
+
             JOptionPane.showConfirmDialog(this, auxAdd);
-            
+
             auxConta.getTitulares().add(
                     new Pessoa(
                             auxAdd.getjTextFieldNome().getText(),
-                            auxAdd.getjTextFieldCpf().getText(), 
-                            auxAdd.getjTextFieldEndereco().getText() ));
+                            auxAdd.getjTextFieldCpf().getText(),
+                            auxAdd.getjTextFieldEndereco().getText()));
         }
-        
+
         Contas.add(auxConta);
 
     }//GEN-LAST:event_jButtonSalvarActionPerformed
@@ -261,27 +258,26 @@ public class BancoAula extends javax.swing.JFrame {
     private void jTextFieldNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNumActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNumActionPerformed
-    
-     //Botao Listar
+
+    //Botao Listar
     private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
         // TODO add your handling code here:
-        
+
         jTextAreaBanco.setText("Contas:");
-        
-        for (Conta Continha : Contas)
-        {
-            jTextAreaBanco.append("\nNumero: " + Continha.getNumero() + "\nSaldo: " + Continha.getSaldo() +
-                    "\nLimite: " + Continha.getLimite());
-            
+
+        for (Conta Continha : Contas) {
+            jTextAreaBanco.append("\nNumero: " + Continha.getNumero() + "\nSaldo: " + Continha.getSaldo()
+                    + "\nLimite: " + Continha.getLimite());
+
             jTextAreaBanco.append("\n\nTItulares: \n");
-            
-            for(Pessoa titu : Continha.getTitulares()){
-                jTextAreaBanco.append("Nome: " + titu.getNome() + "   CPF: " + titu.getCpf() + 
-                        "   Endereço: " + titu.getEndereco() + "\n");
+
+            for (Pessoa titu : Continha.getTitulares()) {
+                jTextAreaBanco.append("Nome: " + titu.getNome() + "   CPF: " + titu.getCpf()
+                        + "   Endereço: " + titu.getEndereco() + "\n");
             }
         }
-        
-        
+
+
     }//GEN-LAST:event_jButtonListarActionPerformed
 
     /**

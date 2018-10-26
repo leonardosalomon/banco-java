@@ -253,19 +253,21 @@ public class BancoSalomon extends javax.swing.JFrame {
         float saldo = Float.parseFloat(jTextFieldSaldo.getText());
         float limite = Float.parseFloat(jTextFieldLimite.getText());
 
-        Conta auxConta;
+        if (!jTextFieldNumero.getText().isEmpty() && !jTextFieldSaldo.getText().isEmpty() && !jTextFieldLimite.getText().isEmpty()) {
+            Conta auxConta;
 
-        auxConta = new Conta(numero, saldo, limite, this.titulares);
+            auxConta = new Conta(numero, saldo, limite, this.titulares);
 
-        auxConta.setTitulares(this.titulares);
+            auxConta.setTitulares(this.titulares);
 
-        Contas.add(auxConta);
+            Contas.add(auxConta);
 
-        this.titulares.clear();
+            this.titulares.clear();
 
-        jTextFieldNumero.setText("");
-        jTextFieldSaldo.setText("");
-        jTextFieldLimite.setText("");
+            jTextFieldNumero.setText("");
+            jTextFieldSaldo.setText("");
+            jTextFieldLimite.setText("");
+        }
     }//GEN-LAST:event_jButtonSalvarContaActionPerformed
 
     //Botão Listar Contas
@@ -297,13 +299,16 @@ public class BancoSalomon extends javax.swing.JFrame {
         String cpf = (jTextFieldCPF.getText());
         String endereco = (jTextFieldEndereço.getText());
 
-        Pessoa titu = new Pessoa(titular, cpf, endereco);
+        if (!jTextFieldTitular.getText().isEmpty() && !jTextFieldCPF.getText().isEmpty() && !jTextFieldEndereço.getText().isEmpty()) {
 
-        titulares.add(titu);
+            Pessoa titu = new Pessoa(titular, cpf, endereco);
 
-        jTextFieldTitular.setText("");
-        jTextFieldCPF.setText("");
-        jTextFieldEndereço.setText("");
+            titulares.add(titu);
+
+            jTextFieldTitular.setText("");
+            jTextFieldCPF.setText("");
+            jTextFieldEndereço.setText("");
+        }
 
 
     }//GEN-LAST:event_jButtonAddTitularActionPerformed

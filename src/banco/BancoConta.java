@@ -5,26 +5,49 @@
  */
 package banco;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
+import javax.swing.text.MaskFormatter;
 
 /*
  * @author Leonardo Salomon
  */
-public class BancoAula extends javax.swing.JFrame {
+public class BancoConta extends javax.swing.JFrame {
 
     /**
-     * Creates new form BancoAula
+     * Creates new form BancoConta
      */
     ArrayList<Conta> Contas;
     private ArrayList<Pessoa> Titulares;
+    ArrayList<Funcionario> Funcionarios;
 
-    public BancoAula() {
+    public BancoConta() {
         initComponents();
         Contas = new ArrayList<Conta>();
         Titulares = new ArrayList<Pessoa>();
+        Funcionarios = new ArrayList<Funcionario>();
+        
     }
 
+    public BancoConta(ArrayList<Conta> Conta) {
+        initComponents();
+        FormatarCampos();
+        Contas = new ArrayList<Conta>();
+        Titulares = new ArrayList<Pessoa>();
+        Funcionarios = new ArrayList<Funcionario>();
+
+    }
+    
+    private void FormatarCampos(){
+        try {
+            MaskFormatter mask = new MaskFormatter("###.###.###-##");
+            mask.install(jFormattedTextFieldCpf);
+        } catch (ParseException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao formatar campo de texto", "ERRO", JOptionPane.ERROR);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,6 +57,7 @@ public class BancoAula extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jLabelNumero = new javax.swing.JLabel();
         jLabelSaldo = new javax.swing.JLabel();
         jLabelLimite = new javax.swing.JLabel();
@@ -52,8 +76,12 @@ public class BancoAula extends javax.swing.JFrame {
         jTextAreaBanco = new javax.swing.JTextArea();
         jButtonListar = new javax.swing.JButton();
         jSpinnerNumTitulares = new javax.swing.JSpinner();
+        jLabel1 = new javax.swing.JLabel();
+        jFormattedTextFieldCpf = new javax.swing.JFormattedTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jFormattedTextField1.setText("jFormattedTextField1");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabelNumero.setText("Numero");
 
@@ -124,6 +152,15 @@ public class BancoAula extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Conta");
+
+        jFormattedTextFieldCpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldCpfActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -151,29 +188,38 @@ public class BancoAula extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabelNome)
-                                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel1))
                             .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jFormattedTextFieldCpf)
+                                    .addGap(53, 53, 53)
+                                    .addComponent(jButtonSalvar))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabelCpf)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(18, 18, 18)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(layout.createSequentialGroup()
+                                                    .addComponent(jLabelEndereco)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabelEndereco)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addComponent(jLabelCpf))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelNumTitulares)
-                                .addComponent(jButtonSalvar)
-                                .addComponent(jSpinnerNumTitulares, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                                        .addComponent(jLabelNumTitulares)
+                                        .addComponent(jSpinnerNumTitulares, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGap(5, 5, 5))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNumero)
                     .addComponent(jLabelSaldo)
@@ -192,15 +238,18 @@ public class BancoAula extends javax.swing.JFrame {
                     .addComponent(jTextFieldEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSpinnerNumTitulares, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
-                .addComponent(jButtonSalvar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonSalvar)
+                    .addComponent(jFormattedTextFieldCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonListar)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     //Botao Salvar
@@ -213,27 +262,43 @@ public class BancoAula extends javax.swing.JFrame {
         String cpf = (jTextFieldCpf.getText());
         String endereco = (jTextFieldEndereco.getText());
         int num_titu = (int) (jSpinnerNumTitulares.getValue());
+        
+        if (!jTextFieldNum.getText().isEmpty() && !jTextFieldSaldo.getText().isEmpty() && !jTextFieldLimite.getText().isEmpty()
+                && !jTextFieldNome.getText().isEmpty() && !jTextFieldCpf.getText().isEmpty() && !jTextFieldEndereco.getText().isEmpty()) {
+            
+            Conta auxConta;
 
-        Conta auxConta;
+            auxConta = new Conta(numero, saldo, limite, nome, cpf, endereco);
 
-        auxConta = new Conta(numero, saldo, limite, nome, cpf, endereco);
+            for (int i = 0; i < (int) (jSpinnerNumTitulares.getValue()) - 1; i++) {
 
-        for (int i = 0; i < (int) (jSpinnerNumTitulares.getValue()) - 1; i++) {
+                AddTitular auxAdd = new AddTitular();
 
-            AddTitular auxAdd = new AddTitular();
+                JOptionPane.showConfirmDialog(this, auxAdd);
 
-            JOptionPane.showConfirmDialog(this, auxAdd);
+                auxConta.getTitulares().add(
+                        new Pessoa(
+                                auxAdd.getjTextFieldNome().getText(),
+                                auxAdd.getjTextFieldCpf().getText(),
+                                auxAdd.getjTextFieldEndereco().getText()));
+            }
 
-            auxConta.getTitulares().add(
-                    new Pessoa(
-                            auxAdd.getjTextFieldNome().getText(),
-                            auxAdd.getjTextFieldCpf().getText(),
-                            auxAdd.getjTextFieldEndereco().getText()));
+            Contas.add(auxConta);
+
+            jTextFieldNum.setText("");
+            jTextFieldSaldo.setText("");
+            jTextFieldLimite.setText("");
+            jTextFieldNome.setText("");
+            jTextFieldCpf.setText("");
+            jTextFieldEndereco.setText("");
+            jSpinnerNumTitulares.setValue(0);
+            jTextAreaBanco.setText("");
+            
         }
-
-        Contas.add(auxConta);
-
+        
+        
     }//GEN-LAST:event_jButtonSalvarActionPerformed
+
 
     private void jTextFieldLimiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldLimiteActionPerformed
         // TODO add your handling code here:
@@ -280,6 +345,10 @@ public class BancoAula extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonListarActionPerformed
 
+    private void jFormattedTextFieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldCpfActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -297,20 +366,21 @@ public class BancoAula extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BancoAula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BancoConta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BancoAula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BancoConta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BancoAula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BancoConta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BancoAula.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BancoConta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BancoAula().setVisible(true);
+                new BancoConta().setVisible(true);
             }
         });
     }
@@ -318,6 +388,9 @@ public class BancoAula extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonListar;
     private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
+    private javax.swing.JFormattedTextField jFormattedTextFieldCpf;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCpf;
     private javax.swing.JLabel jLabelEndereco;
     private javax.swing.JLabel jLabelLimite;

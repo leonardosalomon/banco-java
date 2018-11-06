@@ -11,6 +11,7 @@ import java.util.ArrayList;
  *
  * @author Leonardo Salomon
  */
+
 public class AddFuncionario extends javax.swing.JFrame {
 
     /**
@@ -21,7 +22,6 @@ public class AddFuncionario extends javax.swing.JFrame {
     public AddFuncionario() {
         initComponents();
         Funcionarios = new ArrayList<Funcionario>();
-
     }
 
     public AddFuncionario(ArrayList<Funcionario> Funcionario) {

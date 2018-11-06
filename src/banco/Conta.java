@@ -100,7 +100,6 @@ public class Conta {
     public boolean saque(float valor) {
         //this.saldo = this.saldo - valor;
         if ((this.saldo + this.limite) < valor) {
-
             return false;
         } else {
             this.saldo -= valor;

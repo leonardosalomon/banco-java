@@ -139,6 +139,9 @@ public class Conta {
 
     }
     
-    
+    @Override
+    public String toString() {
+        return ""+this.numero;
+    }
 
 }

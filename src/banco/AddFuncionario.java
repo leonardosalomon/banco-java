@@ -14,7 +14,6 @@ import javax.swing.text.MaskFormatter;
  *
  * @author Leonardo Salomon
  */
-
 public class AddFuncionario extends javax.swing.JFrame {
 
     /**
@@ -33,7 +32,7 @@ public class AddFuncionario extends javax.swing.JFrame {
         //Funcionarios = new ArrayList<Funcionario>();
         this.Funcionarios = Funcionario;
     }
-    
+
     private void FormatarCampos() {
         try {
             MaskFormatter mask = new MaskFormatter("###.###.###-##");
@@ -42,6 +41,7 @@ public class AddFuncionario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Erro ao formatar campo de texto", "ERRO", JOptionPane.ERROR);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -183,9 +183,9 @@ public class AddFuncionario extends javax.swing.JFrame {
                             .addComponent(jTextFieldNomeFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jFormattedTextFieldCpfFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonSalvar)
-                    .addComponent(jButtonListar))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButtonSalvar, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonListar, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -194,7 +194,7 @@ public class AddFuncionario extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-    
+
     //Botão Salvar
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
 
@@ -210,13 +210,13 @@ public class AddFuncionario extends javax.swing.JFrame {
             Funcionario func = new Funcionario(nome, cpf, endereco, matricula, salario);
 
             Funcionarios.add(func);
-            
+
             jTextFieldNomeFunc.setText("");
             jFormattedTextFieldCpfFunc.setText("");
             jTextFieldEnderecoFunc.setText("");
             jTextFieldMatriculaFunc.setText("");
             jTextFieldSalaFunc.setText("");
-            
+
             jButtonListar.doClick();
         }
 
@@ -225,20 +225,20 @@ public class AddFuncionario extends javax.swing.JFrame {
     private void jTextFieldSalaFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSalaFuncActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldSalaFuncActionPerformed
-    
+
     //Botão Listar
     private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
-        
+
         jTextAreaFunc.setText("Funcionários:");
-        
+
         for (Funcionario func : Funcionarios) {
             jTextAreaFunc.append("\n------------------------------------------------------------------------------------------------------------------------------------");
             jTextAreaFunc.append("\nNome: " + func.getNome() + "\nCPF: " + func.getCpf()
                     + "\nEndereço: " + func.getEndereco() + "\nMatricula: " + func.getMatricula()
                     + "\nSalario: " + func.getSalario() + "\n");
         }
-        
-        
+
+
     }//GEN-LAST:event_jButtonListarActionPerformed
 
     private void formAncestorMoved(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_formAncestorMoved

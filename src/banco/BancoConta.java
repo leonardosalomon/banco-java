@@ -40,8 +40,7 @@ public class BancoConta extends javax.swing.JFrame {
         Titulares = new ArrayList<Pessoa>();
         Funcionarios = new ArrayList<Funcionario>();
         this.Contas = Contas;
-        
-        
+
     }
 
     private void FormatarCampos() {
@@ -269,20 +268,20 @@ public class BancoConta extends javax.swing.JFrame {
             auxConta = new Conta(numero, saldo, limite, nome, cpf, endereco);
 
             for (int i = 0; i < (int) (jSpinnerNumTitulares.getValue()) - 1; i++) {
-                
+
                 AddTitular auxAdd = new AddTitular();
 
                 JOptionPane.showConfirmDialog(this, auxAdd);
                 if (!auxAdd.getjTextFieldNome().getText().isEmpty() && !auxAdd.getjFormattedTextFieldCpf().getText().isEmpty()
                         && !auxAdd.getjTextFieldEndereco().getText().isEmpty()) {
-                    
+
                     auxConta.getTitulares().add(
-                        new Pessoa(
-                                auxAdd.getjTextFieldNome().getText(),
-                                auxAdd.getjFormattedTextFieldCpf().getText(),
-                                auxAdd.getjTextFieldEndereco().getText()));
+                            new Pessoa(
+                                    auxAdd.getjTextFieldNome().getText(),
+                                    auxAdd.getjFormattedTextFieldCpf().getText(),
+                                    auxAdd.getjTextFieldEndereco().getText()));
                 }
-                
+
             }
 
             Contas.add(auxConta);
@@ -348,11 +347,6 @@ public class BancoConta extends javax.swing.JFrame {
     private void jFormattedTextFieldCpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCpfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextFieldCpfActionPerformed
-        
-        
-        
-    
-    
 
     /**
      * @param args the command line arguments
@@ -383,11 +377,11 @@ public class BancoConta extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new BancoConta().setVisible(true);
-//            }
-//        });
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new BancoConta().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

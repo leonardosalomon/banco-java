@@ -20,6 +20,16 @@ public class Operações extends javax.swing.JFrame {
     private ArrayList<Pessoa> Titulares;
     ArrayList<Funcionario> Funcionarios;
 
+    public Operações() {
+        initComponents();
+        this.Contas = Contas;
+
+        for (Conta aux : Contas) {
+            jComboBoxContaOri.addItem(aux);
+            jComboBoxContaDes.addItem(aux);
+        }
+    }
+    
     public Operações(ArrayList<Conta> Contas) {
         initComponents();
         this.Contas = Contas;
@@ -232,13 +242,13 @@ public class Operações extends javax.swing.JFrame {
             jTextAreaBanco.setText("Depósito realizado com êxito! \n--------------------------------------------\n");
             jTextAreaBanco.append("Conta \nNumero: " + contaOri.getNumero() + "\nSaldo atual: " + contaOri.getSaldo());
         }
-        
+
         if (auxSaca) {
             contaOri.saque(valor);
             jTextAreaBanco.setText("Saque realizado com êxito! \n-------------------------------------------\n");
             jTextAreaBanco.append("Conta \nNumero: " + contaOri.getNumero() + "\nSaldo atual: " + contaOri.getSaldo());
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -302,11 +312,11 @@ public class Operações extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new Operações().setVisible(true);
-//            }
-//        });
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new Operações().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

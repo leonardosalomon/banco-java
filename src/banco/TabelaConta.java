@@ -19,6 +19,11 @@ public class TabelaConta extends javax.swing.JFrame {
      */
     ArrayList<Conta> Contas;
     
+    public TabelaConta() {
+        initComponents();
+        this.Contas = Contas;
+    }
+    
     public TabelaConta(ArrayList<Conta> Contas) {
         initComponents();
         this.Contas = Contas;
@@ -136,11 +141,11 @@ public class TabelaConta extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new TabelaConta().setVisible(true);
-//            }
-//        });
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new TabelaConta().setVisible(true);
+            }
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

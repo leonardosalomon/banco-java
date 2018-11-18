@@ -39,5 +39,10 @@ public class Pessoa {
     public String getCpf() {
         return cpf;
     }
-
+    
+    @Override
+    public String toString() {
+        return "" + this.nome;
+    }
+    
 }

@@ -1,22 +1,19 @@
 package banco;
 
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
-import javax.swing.JOptionPane;
-import javax.swing.text.MaskFormatter;
+import javax.swing.*;
 
-public class Conta {
+public class Conta implements InterfaceConta {
 
     //Atributos
     private ArrayList<Pessoa> titulares;
     ArrayList<Funcionario> funcionarios;
+    ArrayList<Conta> Contas;
     private int numero;
     //private Pessoa titular;
     private String conta;
     private float saldo, limite;
+    public static int totalDeContas = 0;
 
     public Conta() {
         this.numero = 0;
@@ -84,6 +81,7 @@ public class Conta {
 
         this.titulares.add(new Pessoa(nome, cpf, endereco));
 
+        this.totalDeContas++;
     }
 
     public Conta(int numero, float saldo, float limite, ArrayList<Pessoa> titulares) {
@@ -94,6 +92,7 @@ public class Conta {
         this.titulares = new ArrayList<Pessoa>();
 
         this.setTitulares(titulares);
+
     }
 
     //Comportamentos   Métodos 
@@ -124,6 +123,15 @@ public class Conta {
         }
     }
 
+    public void fechar() {
+
+//        for (int i = 0; i < Contas.size(); i++) {
+//                if (Contas.get(i).getNumero() == rm) {
+//                    Contas.remove(i);
+//                }
+//            }
+    }
+
     public boolean getSaldo(double valor) {
         this.saldo += valor;
         System.out.println("Seu saldo é " + this.saldo);
@@ -138,10 +146,10 @@ public class Conta {
         return true;
 
     }
-    
+
     @Override
     public String toString() {
-        return ""+this.numero;
+        return "" + this.numero;
     }
 
 }

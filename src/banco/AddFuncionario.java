@@ -23,13 +23,11 @@ public class AddFuncionario extends javax.swing.JFrame {
 
     public AddFuncionario() {
         initComponents();
-        Funcionarios = new ArrayList<Funcionario>();
     }
 
     public AddFuncionario(ArrayList<Funcionario> Funcionario) {
         initComponents();
         FormatarCampos();
-        //Funcionarios = new ArrayList<Funcionario>();
         this.Funcionarios = Funcionario;
     }
 
@@ -51,21 +49,22 @@ public class AddFuncionario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabelNome = new javax.swing.JLabel();
         jTextFieldNomeFunc = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelCpf = new javax.swing.JLabel();
         jTextFieldEnderecoFunc = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jLabelEndereco = new javax.swing.JLabel();
         jTextFieldMatriculaFunc = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jLabelMatricula = new javax.swing.JLabel();
         jTextFieldSalaFunc = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        jLabelSalario = new javax.swing.JLabel();
         jButtonSalvar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaFunc = new javax.swing.JTextArea();
         jButtonListar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
         jFormattedTextFieldCpfFunc = new javax.swing.JFormattedTextField();
+        jButtonEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addHierarchyBoundsListener(new java.awt.event.HierarchyBoundsListener() {
@@ -76,13 +75,13 @@ public class AddFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Nome");
+        jLabelNome.setText("Nome");
 
-        jLabel2.setText("CPF");
+        jLabelCpf.setText("CPF");
 
-        jLabel3.setText("Endereço");
+        jLabelEndereco.setText("Endereço");
 
-        jLabel4.setText("Matrícula");
+        jLabelMatricula.setText("Matrícula");
 
         jTextFieldSalaFunc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,7 +89,7 @@ public class AddFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Salário");
+        jLabelSalario.setText("Salário");
 
         jButtonSalvar.setText("Salvar");
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
@@ -110,9 +109,16 @@ public class AddFuncionario extends javax.swing.JFrame {
             }
         });
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel6.setText("Funcionário");
-        jLabel6.setToolTipText("");
+        jLabelTitulo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabelTitulo.setText("Funcionário");
+        jLabelTitulo.setToolTipText("");
+
+        jButtonEditar.setText("Editar");
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,72 +129,75 @@ public class AddFuncionario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(210, 210, 210)
-                        .addComponent(jLabel6)
+                        .addComponent(jLabelTitulo)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonSalvar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButtonListar))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jButtonSalvar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButtonEditar)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jButtonListar))
+                                .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jTextFieldNomeFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel1))
+                                        .addComponent(jLabelNome))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jFormattedTextFieldCpfFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel2))
+                                        .addComponent(jLabelCpf))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jTextFieldEnderecoFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel3))
+                                        .addComponent(jLabelEndereco))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel4)
+                                        .addComponent(jLabelMatricula)
                                         .addComponent(jTextFieldMatriculaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jTextFieldSalaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 10, Short.MAX_VALUE))))
+                                        .addComponent(jLabelSalario)
+                                        .addComponent(jTextFieldSalaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 13, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel6)
-                .addGap(18, 24, Short.MAX_VALUE)
+                .addComponent(jLabelTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jTextFieldEnderecoFunc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addComponent(jLabelEndereco)
+                                .addComponent(jLabelMatricula, javax.swing.GroupLayout.Alignment.TRAILING))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jTextFieldMatriculaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel5)
+                            .addComponent(jLabelSalario)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jTextFieldSalaFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
+                            .addComponent(jLabelCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelNome))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextFieldNomeFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jFormattedTextFieldCpfFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonSalvar, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButtonListar, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonListar)
+                    .addComponent(jButtonEditar)
+                    .addComponent(jButtonSalvar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(16, 16, 16))
         );
 
         pack();
@@ -232,7 +241,7 @@ public class AddFuncionario extends javax.swing.JFrame {
         jTextAreaFunc.setText("Funcionários:");
 
         for (Funcionario func : Funcionarios) {
-            jTextAreaFunc.append("\n------------------------------------------------------------------------------------------------------------------------------------");
+            jTextAreaFunc.append("\n-----------------------------------------------------------------------------------------------------------------------------");
             jTextAreaFunc.append("\nNome: " + func.getNome() + "\nCPF: " + func.getCpf()
                     + "\nEndereço: " + func.getEndereco() + "\nMatricula: " + func.getMatricula()
                     + "\nSalario: " + func.getSalario() + "\n");
@@ -244,6 +253,14 @@ public class AddFuncionario extends javax.swing.JFrame {
     private void formAncestorMoved(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_formAncestorMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_formAncestorMoved
+
+    //Botão Editar
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+
+        EditarFuncionario auxEditFunc = new EditarFuncionario(Funcionarios);
+        auxEditFunc.setVisible(true);
+
+    }//GEN-LAST:event_jButtonEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -281,15 +298,16 @@ public class AddFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonListar;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JFormattedTextField jFormattedTextFieldCpfFunc;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabelCpf;
+    private javax.swing.JLabel jLabelEndereco;
+    private javax.swing.JLabel jLabelMatricula;
+    private javax.swing.JLabel jLabelNome;
+    private javax.swing.JLabel jLabelSalario;
+    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaFunc;
     private javax.swing.JTextField jTextFieldEnderecoFunc;

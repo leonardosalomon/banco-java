@@ -13,6 +13,7 @@ public class Funcionario extends Pessoa {
 
     String matricula;
     float salario;
+    public static int totalDeFuncionarios = 0;
 
     Funcionario() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -26,7 +27,7 @@ public class Funcionario extends Pessoa {
         this.matricula = matricula;
     }
 
-    public double getSalario() {
+    public float getSalario() {
         return salario;
     }
 
@@ -40,6 +41,13 @@ public class Funcionario extends Pessoa {
         this.endereco = endereco;
         this.matricula = matricula;
         this.salario = salario;
+        
+        totalDeFuncionarios++;
     }
-
-}
+    
+    @Override
+    public String toString() {
+        return "" + this.matricula;
+    }
+    
+}   

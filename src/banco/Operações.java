@@ -67,8 +67,6 @@ public class Operações extends javax.swing.JFrame {
         jTextFieldContaOri = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jButtonFechar = new javax.swing.JButton();
-        jButtonEditar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -170,20 +168,6 @@ public class Operações extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("For Percorrendo todo o Array");
 
-        jButtonFechar.setText("Fechar Conta");
-        jButtonFechar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonFecharActionPerformed(evt);
-            }
-        });
-
-        jButtonEditar.setText("Editar Conta");
-        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonEditarActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -222,36 +206,34 @@ public class Operações extends javax.swing.JFrame {
                                         .addComponent(jLabel5)))
                                 .addGap(94, 94, 94))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonEditar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonFechar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(206, 206, 206)
                                 .addComponent(jButtonOk)
                                 .addGap(4, 4, 4)
                                 .addComponent(jButtonListar)
                                 .addGap(36, 36, 36)))
-                        .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(83, 83, 83))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(19, 19, 19)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButtonArrayOk)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jTextFieldContaOri, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextFieldContaDes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextFieldValor1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(22, 22, 22))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(19, 19, 19))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jTextFieldContaOri, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(jTextFieldContaDes, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jTextFieldValor1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jButtonArrayOk, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(20, 20, 20))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(103, 103, 103))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,29 +241,26 @@ public class Operações extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonTrans)
+                    .addComponent(jRadioButtonDep)
+                    .addComponent(jRadioButtonSaque)
+                    .addComponent(jLabel1))
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel1)
-                        .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel8)
                             .addComponent(jLabel7)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jTextFieldContaDes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextFieldValor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextFieldContaOri, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(4, 4, 4)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextFieldContaOri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldContaDes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldValor1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonArrayOk))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jRadioButtonTrans)
-                            .addComponent(jRadioButtonDep)
-                            .addComponent(jRadioButtonSaque))
-                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -299,12 +278,10 @@ public class Operações extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButtonOk)
-                            .addComponent(jButtonListar)
-                            .addComponent(jButtonFechar)
-                            .addComponent(jButtonEditar))))
-                .addGap(15, 15, 15)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                .addContainerGap())
+                            .addComponent(jButtonListar))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         pack();
@@ -331,7 +308,8 @@ public class Operações extends javax.swing.JFrame {
         if (auxTransferencia) {
             if (contaOri != contaDes) {
                 if (contaOri.transferencia(valor, contaDes)) {
-                    jTextAreaBanco.setText("Transferência realizada com êxito! \n-----------------------------------------------\n");
+                    JOptionPane.showMessageDialog(null, "Transferência no valor R$" + valor +" realizada com êxito!", "Conta", JOptionPane.INFORMATION_MESSAGE);
+                    jTextAreaBanco.setText("Informações das contas após transferência: \n-----------------------------------------------\n");
                     jTextAreaBanco.append("Contas \nNumero: " + contaOri.getNumero() + "\nSaldo atual: " + contaOri.getSaldo());
                     jTextAreaBanco.append("\n\nNumero: " + contaDes.getNumero() + "\nSaldo atual: " + contaDes.getSaldo());
                 } else {
@@ -342,13 +320,15 @@ public class Operações extends javax.swing.JFrame {
 
         if (auxDeposita) {
             contaOri.deposito(valor);
-            jTextAreaBanco.setText("Depósito realizado com êxito! \n--------------------------------------------\n");
+            JOptionPane.showMessageDialog(null, "Depósito no valor R$" + valor +" realizado com êxito!", "Conta", JOptionPane.INFORMATION_MESSAGE);
+            jTextAreaBanco.setText("Informações da conta após depósito: \n--------------------------------------------\n");
             jTextAreaBanco.append("Conta \nNumero: " + contaOri.getNumero() + "\nSaldo atual: " + contaOri.getSaldo());
         }
 
         if (auxSaca) {
             contaOri.saque(valor);
-            jTextAreaBanco.setText("Saque realizado com êxito! \n-------------------------------------------\n");
+            JOptionPane.showMessageDialog(null, "Saque no valor R$" + valor +" realizado com êxito!", "Conta", JOptionPane.INFORMATION_MESSAGE);
+            jTextAreaBanco.setText("Informações da conta após saque: \n-------------------------------------------\n");
             jTextAreaBanco.append("Conta \nNumero: " + contaOri.getNumero() + "\nSaldo atual: " + contaOri.getSaldo());
         }
 
@@ -448,29 +428,6 @@ public class Operações extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldContaOriActionPerformed
 
-    private void jButtonFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFecharActionPerformed
-      
-        Conta rm = (Conta) jComboBoxContaOri.getSelectedItem();
-        
-        //Remove a Conta
-        Contas.remove(rm);
-        
-        //Remove todos os itens do ComboBox
-        jComboBoxContaOri.removeAllItems();
-        jComboBoxContaDes.removeAllItems();
-        
-        //Preenche os ComboBox novamente com as informações pós exclusões
-        for (Conta aux : Contas) {
-            jComboBoxContaOri.addItem(aux);
-            jComboBoxContaDes.addItem(aux);
-        }
-        
-        Conta.totalDeContas--;
-
-        jButtonListar.doClick();
-        
-    }//GEN-LAST:event_jButtonFecharActionPerformed
-
     private void jRadioButtonDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDepActionPerformed
        
         jComboBoxContaDes.setEnabled(false);
@@ -480,14 +437,6 @@ public class Operações extends javax.swing.JFrame {
     private void jComboBoxContaOriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxContaOriActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxContaOriActionPerformed
-
-    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
-        // TODO add your handling code here:
-
-        EditarConta auxEditCont = new EditarConta(Contas);
-        auxEditCont.setVisible(true);
-
-    }//GEN-LAST:event_jButtonEditarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -527,8 +476,6 @@ public class Operações extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButtonArrayOk;
-    private javax.swing.JButton jButtonEditar;
-    private javax.swing.JButton jButtonFechar;
     private javax.swing.JButton jButtonListar;
     private javax.swing.JButton jButtonOk;
     private javax.swing.JComboBox<Conta> jComboBoxContaDes;

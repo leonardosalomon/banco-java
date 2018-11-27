@@ -16,12 +16,14 @@ public class Banco extends javax.swing.JFrame {
     ArrayList<Conta> Contas;
     ArrayList<Pessoa> Titulares;
     ArrayList<Funcionario> Funcionarios;
+    ArrayList<Gerente> Gerentes;
 
     public Banco() {
         initComponents();
         Contas = new ArrayList<Conta>();
         Titulares = new ArrayList<Pessoa>();
         Funcionarios = new ArrayList<Funcionario>();
+        Gerentes = new ArrayList<Gerente>();
     }
 
     /**
@@ -43,6 +45,10 @@ public class Banco extends javax.swing.JFrame {
         jButtonGerar = new javax.swing.JButton();
         jButtonListFunc = new javax.swing.JButton();
         jButtonEditarFunc = new javax.swing.JButton();
+        jButtonEditar = new javax.swing.JButton();
+        jButtonGerente = new javax.swing.JButton();
+        jButtonEditGer = new javax.swing.JButton();
+        jButtonListGer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,6 +110,34 @@ public class Banco extends javax.swing.JFrame {
             }
         });
 
+        jButtonEditar.setText("Editar Conta");
+        jButtonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditarActionPerformed(evt);
+            }
+        });
+
+        jButtonGerente.setText("Gerente");
+        jButtonGerente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGerenteActionPerformed(evt);
+            }
+        });
+
+        jButtonEditGer.setText("Editar Gerente");
+        jButtonEditGer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditGerActionPerformed(evt);
+            }
+        });
+
+        jButtonListGer.setText("Listar Gerente");
+        jButtonListGer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonListGerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -117,27 +151,27 @@ public class Banco extends javax.swing.JFrame {
                 .addGap(35, 35, 35))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(154, 154, 154)
-                            .addComponent(jLabelTitulo))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(22, 22, 22)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(15, 15, 15)
-                                        .addComponent(jLabel3)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jButtonOperacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButtonListCont, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jButtonCadConta, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(210, 210, 210)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jButtonGerar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(154, 154, 154)
+                        .addComponent(jLabelTitulo))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonEditGer, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonOperacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonListCont, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonCadConta, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonGerente, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonListGer, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(60, 60, 60)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonGerar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel2)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(15, 15, 15)
+                                    .addComponent(jLabel3))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -157,13 +191,25 @@ public class Banco extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonEditarFunc)
                     .addComponent(jButtonOperacoes))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonEditar)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonGerar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(6, 6, 6)
-                .addComponent(jLabel3)
-                .addContainerGap())
+                .addComponent(jButtonGerente)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addComponent(jButtonGerar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonListGer)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonEditGer)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         pack();
@@ -197,7 +243,7 @@ public class Banco extends javax.swing.JFrame {
     //Botão Listar Contas
     private void jButtonListContActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListContActionPerformed
 
-        TabelaConta auxTabela = new TabelaConta(Contas);
+        ListaConta auxTabela = new ListaConta(Contas);
         auxTabela.setVisible(true);
 
     }//GEN-LAST:event_jButtonListContActionPerformed
@@ -224,6 +270,13 @@ public class Banco extends javax.swing.JFrame {
 
             Funcionarios.add(Func);
         }
+        
+        //Loop de criação de Gerentes
+        for (int i = 1; i < 10; i++) {
+            Gerente Ger = new Gerente("Name" + i, "000.000.000-0" + i, "Address" + i, "00000" + i, 5000);
+
+            Gerentes.add(Ger);
+        }
 
         //Desabilitando o botão de Gerar Dados
         jButtonGerar.setEnabled(false);
@@ -232,7 +285,7 @@ public class Banco extends javax.swing.JFrame {
     //Botão de Listar Funcionários
     private void jButtonListFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListFuncActionPerformed
 
-        TabelaFuncionario auxTabela = new TabelaFuncionario(Funcionarios);
+        ListaFuncionario auxTabela = new ListaFuncionario(Funcionarios);
         auxTabela.setVisible(true);
 
     }//GEN-LAST:event_jButtonListFuncActionPerformed
@@ -244,6 +297,31 @@ public class Banco extends javax.swing.JFrame {
         auxEditFunc.setVisible(true);
 
     }//GEN-LAST:event_jButtonEditarFuncActionPerformed
+
+    private void jButtonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditarActionPerformed
+        // TODO add your handling code here:
+
+        EditarConta auxEditCont = new EditarConta(Contas);
+        auxEditCont.setVisible(true);
+    }//GEN-LAST:event_jButtonEditarActionPerformed
+
+    private void jButtonGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGerenteActionPerformed
+        // TODO add your handling code here:
+        AddGerente auxAddGerente = new AddGerente(Gerentes);
+        auxAddGerente.setVisible(true);
+    }//GEN-LAST:event_jButtonGerenteActionPerformed
+
+    private void jButtonEditGerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditGerActionPerformed
+        // TODO add your handling code here:
+        EditarGerente editGer = new EditarGerente(Gerentes);
+        editGer.setVisible(true);
+    }//GEN-LAST:event_jButtonEditGerActionPerformed
+
+    private void jButtonListGerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListGerActionPerformed
+        // TODO add your handling code here:
+        ListaGerente listGer = new ListaGerente(Gerentes);
+        listGer.setVisible(true);
+    }//GEN-LAST:event_jButtonListGerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,10 +361,14 @@ public class Banco extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadConta;
     private javax.swing.JButton jButtonCadFunc;
+    private javax.swing.JButton jButtonEditGer;
+    private javax.swing.JButton jButtonEditar;
     private javax.swing.JButton jButtonEditarFunc;
     private javax.swing.JButton jButtonGerar;
+    private javax.swing.JButton jButtonGerente;
     private javax.swing.JButton jButtonListCont;
     private javax.swing.JButton jButtonListFunc;
+    private javax.swing.JButton jButtonListGer;
     private javax.swing.JButton jButtonOperacoes;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

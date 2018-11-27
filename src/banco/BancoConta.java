@@ -289,7 +289,9 @@ public class BancoConta extends javax.swing.JFrame {
             }
 
             Contas.add(auxConta);
-
+                       
+            JOptionPane.showMessageDialog(null, "Conta cadastrada com êxito!", "Conta", JOptionPane.INFORMATION_MESSAGE);
+            
             jTextFieldNum.setText("");
             jTextFieldSaldo.setText("");
             jTextFieldLimite.setText("");

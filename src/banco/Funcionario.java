@@ -15,8 +15,11 @@ public class Funcionario extends Pessoa {
     float salario;
     public static int totalDeFuncionarios = 0;
 
-    Funcionario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Funcionario(String nome, String cpf, String endereco, String matricula, float salario) {
+        super(nome, cpf, endereco);
+        this.matricula = matricula;
+        this.salario = salario;
+        totalDeFuncionarios++;
     }
 
     public String getMatricula() {
@@ -34,17 +37,7 @@ public class Funcionario extends Pessoa {
     public void setSalario(float salario) {
         this.salario = salario;
     }
-
-    public Funcionario(String nome, String cpf, String endereco, String matricula, float salario) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.endereco = endereco;
-        this.matricula = matricula;
-        this.salario = salario;
-        
-        totalDeFuncionarios++;
-    }
-    
+       
     @Override
     public String toString() {
         return "" + this.matricula;

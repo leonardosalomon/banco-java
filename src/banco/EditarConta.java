@@ -6,6 +6,7 @@
 package banco;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,17 +18,17 @@ public class EditarConta extends javax.swing.JFrame {
      * Creates new form EditarConta
      */
     ArrayList<Conta> Contas;
-    
+
     public EditarConta() {
         initComponents();
     }
-    
+
     public EditarConta(ArrayList<Conta> Conta) {
         initComponents();
         this.Contas = Conta;
         for (Conta Contas : Conta) {
             jComboBoxContas.addItem(Contas);
-            
+
         }
 //        for (int i = 0; i < Contas.size(); i++) {
 //            for (Pessoa pe : Contas.get(i).getTitulares()) {
@@ -35,8 +36,7 @@ public class EditarConta extends javax.swing.JFrame {
 //            }
 //        }
     }
-    
-       
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -216,17 +216,16 @@ public class EditarConta extends javax.swing.JFrame {
 
     private void jComboBoxContasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxContasActionPerformed
         // TODO add your handling code here:
-         Conta auxConta = (Conta) jComboBoxContas.getSelectedItem();
+        if (jComboBoxContas.getSelectedItem() != null) {
+            Conta auxConta = (Conta) jComboBoxContas.getSelectedItem();
 
-        //ArrayList<Pessoa> aux = auxConta.getTitulares();
+            jTextFieldNum.setText(Integer.toString(auxConta.getNumero()));
+            jTextFieldSaldo.setText(Float.toString(auxConta.getSaldo()));
+            jTextFieldLimite.setText(Float.toString(auxConta.getLimite()));
+        }
         
-        //Pessoa asd = (Pessoa) jComboBoxTitu.getSelectedItem();
-        
-        jTextFieldNum.setText (Integer.toString(auxConta.getNumero()));
-        jTextFieldSaldo.setText(Float.toString(auxConta.getSaldo()));
-        jTextFieldLimite.setText(Float.toString(auxConta.getLimite()));
-        
-        
+
+
     }//GEN-LAST:event_jComboBoxContasActionPerformed
 
     private void jTextFieldSaldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldSaldoActionPerformed
@@ -242,28 +241,27 @@ public class EditarConta extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldLimiteActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        
+
         int numero = Integer.parseInt(jTextFieldNum.getText());
         float saldo = Float.parseFloat(jTextFieldSaldo.getText());
         float limite = Float.parseFloat(jTextFieldLimite.getText());
-        
-        if (!jTextFieldNum.getText().isEmpty() && !jTextFieldSaldo.getText().isEmpty() && !jTextFieldLimite.getText().isEmpty() ){
+
+        if (!jTextFieldNum.getText().isEmpty() && !jTextFieldSaldo.getText().isEmpty() && !jTextFieldLimite.getText().isEmpty()) {
             Conta Conta = (Conta) jComboBoxContas.getSelectedItem();
-        
+
             Conta.setNumero(numero);
             Conta.setSaldo(saldo);
             Conta.setLimite(limite);
         }
-        
+
         jButtonListar.doClick();
-                  
+
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
+
         Conta auxConta = (Conta) jComboBoxContas.getSelectedItem();
 
-        
         EditarTitulares aux = new EditarTitulares(auxConta);
         aux.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -272,20 +270,31 @@ public class EditarConta extends javax.swing.JFrame {
 
         Conta rm = (Conta) jComboBoxContas.getSelectedItem();
 
-        //Remove a Conta
-        Contas.remove(rm);
+        int confirm = JOptionPane.showConfirmDialog(null, "Deseja remover a conta de número " + rm.getNumero() + "?");
 
-        //Remove todos os itens do ComboBox
-        jComboBoxContas.removeAllItems();
-        
+        if (confirm == JOptionPane.YES_OPTION) {
 
-        //Preenche os ComboBox novamente com as informações pós exclusões
-        for (Conta aux : Contas) {
-            jComboBoxContas.addItem(aux);
+            //Remove a Conta
+            Contas.remove(rm);
+
+            //Remove todos os itens do ComboBox
+            jComboBoxContas.removeAllItems();
+
+            //Preenche os ComboBox novamente com as informações pós exclusões
+            for (Conta aux : Contas) {
+                jComboBoxContas.addItem(aux);
+            }
+
+            Conta.totalDeContas--;
+            
+            
+            EditarConta.this.dispose();
+            
+            
+            
+            JOptionPane.showMessageDialog(null, "Conta removida com êxito!", "Conta", JOptionPane.INFORMATION_MESSAGE);
         }
-
-        Conta.totalDeContas--;
-
+            
     }//GEN-LAST:event_jButtonFecharActionPerformed
 
     private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
@@ -294,14 +303,14 @@ public class EditarConta extends javax.swing.JFrame {
 
         jTextAreaBanco.setText("Informações da Conta: \n");
         jTextAreaBanco.append("\nNumero: " + aux.getNumero() + "\nSaldo: " + aux.getSaldo()
-                    + "\nLimite: " + aux.getLimite());
-        
+                + "\nLimite: " + aux.getLimite());
+
         jTextAreaBanco.append("\n\nTItulares: \n\n");
 
-            for (Pessoa titu : aux.getTitulares()) {
-                jTextAreaBanco.append("Nome: " + titu.getNome() + "   CPF: " + titu.getCpf()
-                        + "   Endereço: " + titu.getEndereco() + "\n");
-            }
+        for (Pessoa titu : aux.getTitulares()) {
+            jTextAreaBanco.append("Nome: " + titu.getNome() + "   CPF: " + titu.getCpf()
+                    + "   Endereço: " + titu.getEndereco() + "\n");
+        }
     }//GEN-LAST:event_jButtonListarActionPerformed
 
     /**

@@ -6,9 +6,7 @@
 package banco;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.*;
 import javax.swing.JOptionPane;
 import javax.swing.text.MaskFormatter;
 
@@ -73,7 +71,7 @@ public class EditarFuncionario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jComboBoxFunc = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonRemover = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -123,10 +121,10 @@ public class EditarFuncionario extends javax.swing.JFrame {
 
         jLabel1.setText("Selecione a matricula:");
 
-        jButton1.setText("Remover");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRemover.setText("Remover");
+        jButtonRemover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonRemoverActionPerformed(evt);
             }
         });
 
@@ -140,7 +138,7 @@ public class EditarFuncionario extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButtonSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(jButtonRemover)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonListar))
                     .addComponent(jScrollPane1)
@@ -209,7 +207,7 @@ public class EditarFuncionario extends javax.swing.JFrame {
                     .addComponent(jButtonListar)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButtonSalvar)
-                        .addComponent(jButton1)))
+                        .addComponent(jButtonRemover)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -247,19 +245,19 @@ public class EditarFuncionario extends javax.swing.JFrame {
             jTextFieldEnderecoFunc.setText("");
             jTextFieldMatriculaFunc.setText("");
             jTextFieldSalaFunc.setText("");
-            
+
             jButtonListar.doClick();
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     private void jButtonListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonListarActionPerformed
-        
+
         Funcionario func = (Funcionario) jComboBoxFunc.getSelectedItem();
 
         jTextAreaFunc.setText("Informações do funcionário: \n");
-	jTextAreaFunc.append("\nNome: " + func.getNome() + "\nCPF: " + func.getCpf()
-                    + "\nEndereço: " + func.getEndereco() + "\nMatricula: " + func.getMatricula()
-                    + "\nSalario: " + func.getSalario() + "\n");				
+        jTextAreaFunc.append("\nNome: " + func.getNome() + "\nCPF: " + func.getCpf()
+                + "\nEndereço: " + func.getEndereco() + "\nMatricula: " + func.getMatricula()
+                + "\nSalario: " + func.getSalario() + "\n");
 
     }//GEN-LAST:event_jButtonListarActionPerformed
 
@@ -278,24 +276,34 @@ public class EditarFuncionario extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jComboBoxFuncActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoverActionPerformed
 
         Funcionario rm = (Funcionario) jComboBoxFunc.getSelectedItem();
 
-        //Remove a Conta
-        Funcionarios.remove(rm);
+        int confirm = JOptionPane.showConfirmDialog(null, "Deseja remover o funcionário " + rm.getNome() + "?");
 
-        //Remove todos os itens do ComboBox
-        jComboBoxFunc.removeAllItems();
+        if (confirm == JOptionPane.YES_OPTION) {
+            
+            //Remove a Conta
+            Funcionarios.remove(rm);
 
-        //Preenche os ComboBox novamente com as informações pós exclusões
-        for (Funcionario Func : Funcionarios) {
-            jComboBoxFunc.addItem(Func);
+            //Remove todos os itens do ComboBox
+            jComboBoxFunc.removeAllItems();
+
+            //Preenche os ComboBox novamente com as informações pós exclusões
+            for (Funcionario Func : Funcionarios) {
+                jComboBoxFunc.addItem(Func);
+            }
+
+            Funcionario.totalDeFuncionarios--;
+            
+            EditarFuncionario.this.dispose();
+            
+            JOptionPane.showMessageDialog(null, "Funcionário removido com êxito!", "Funcionário", JOptionPane.INFORMATION_MESSAGE);
         }
 
-        Funcionario.totalDeFuncionarios--;
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonRemoverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -333,8 +341,8 @@ public class EditarFuncionario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonListar;
+    private javax.swing.JButton jButtonRemover;
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JComboBox<Funcionario> jComboBoxFunc;
     private javax.swing.JFormattedTextField jFormattedTextFieldCpfFunc;

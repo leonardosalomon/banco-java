@@ -219,7 +219,9 @@ public class AddFuncionario extends javax.swing.JFrame {
             Funcionario func = new Funcionario(nome, cpf, endereco, matricula, salario);
 
             Funcionarios.add(func);
-
+            
+            JOptionPane.showMessageDialog(null, "Funcionário cadastrado com êxito!", "Funcionário", JOptionPane.INFORMATION_MESSAGE);
+            
             jTextFieldNomeFunc.setText("");
             jFormattedTextFieldCpfFunc.setText("");
             jTextFieldEnderecoFunc.setText("");
